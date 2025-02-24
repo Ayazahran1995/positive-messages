@@ -36,11 +36,19 @@
       font-size: 18px;
       color: #333;
       line-height: 1.6;
-      margin: 0;
+      margin: 20px 0;
+    }
+
+    .widget img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      transition: opacity 0.5s ease;
     }
 
     .widget button {
-      margin-top: 20px;
+      margin-top: 10px;
       padding: 10px 20px;
       font-size: 16px;
       color: #fff;
@@ -65,28 +73,32 @@
 <body>
   <div class="widget">
     <h1>You've Got This!</h1>
+    <img id="https://imgur.com/dadyS4K" alt="Positive Image">
     <p id="positive-message">Take a deep breath. You're doing better than you think.</p>
     <button onclick="newMessage()">More Positivity</button>
   </div>
 
   <script>
     const messages = [
-      "You are stronger than you feel today.",
-      "Small steps still move you forward.",
-      "It's okay to not be okay. Tomorrow is a new day.",
-      "You are enough, just as you are.",
-      "Progress, not perfection, is what matters.",
-      "You are loved, even on your hardest days.",
-      "This moment will pass. Hold on.",
-      "You are capable of amazing things.",
-      "Be kind to yourself. You deserve it.",
-      "Every day is a fresh start."
+      { text: "You are stronger than you feel today.", image: "https://imgur.com/undefined" },
+      { text: "Small steps still move you forward.", image: "https://imgur.com/9mCYAUn" },
+      { text: "It's okay to not be okay. Tomorrow is a new day.", image: "https://imgur.com/dadyS4K" },
+      { text: "You are enough, just as you are.", image: "https://imgur.com/dadyS4K" },
+      { text: "Progress, not perfection, is what matters.", image: "https://imgur.com/9mCYAUn" },
+      { text: "You are loved, even on your hardest days.", image: "https://imgur.com/undefined" },
+      { text: "This moment will pass. Hold on.", image: "https://imgur.com/9mCYAUn" },
+      { text: "You are capable of amazing things.", image: "https://imgur.com/dadyS4K" },
+      { text: "Be kind to yourself. You deserve it.", image: "https://imgur.com/9mCYAUn" },
+      { text: "Every day is a fresh start.", image: "https://imgur.com/undefined" }
     ];
 
     function newMessage() {
-      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-      document.getElementById('positive-message').textContent = randomMessage;
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      const randomMessage = messages[randomIndex];
+      document.getElementById('positive-message').textContent = randomMessage.text;
+      document.getElementById('positive-image').src = randomMessage.image;
     }
   </script>
 </body>
+</html>
 </html>
