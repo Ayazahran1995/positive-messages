@@ -1,101 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Positive Vibes Widget</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    .widget {
-      background: #fff;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      width: 250px;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .widget h1 {
-      font-size: 18px;
-      color: #ff6f61;
-      margin-bottom: 10px;
-    }
-
-    .widget p {
-      font-size: 14px;
-      color: #333;
-      line-height: 1.4;
-    }
-
-    .widget img {
-      width: 100%;
-      max-width: 150px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-
-    .widget button {
-      margin-top: 10px;
-      padding: 8px 15px;
-      font-size: 14px;
-      color: #fff;
-      background: #ff6f61;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .widget button:hover {
-      background: #ff4a3d;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positive Vibes Widget</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <div class="widget">
-    <h1>You've Got This! 💪</h1>
-    <img id="positive-image" src="https://i.imgur.com/dadyS4K.jpg" alt="Positive Image">
-    <p id="positive-message">Take a deep breath. You're doing better than you think.</p>
-    <button onclick="newMessage()">More Positivity</button>
-  </div>
-
-  <script>
-    const messages = [
-      { text: "You are stronger than you feel today.", image: "https://i.imgur.com/abc123.jpg" },
-      { text: "Small steps still move you forward.", image: "https://i.imgur.com/xyz456.jpg" },
-      { text: "It's okay to not be okay. Tomorrow is a new day.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "You are enough, just as you are.", image: "https://i.imgur.com/def789.jpg" },
-      { text: "Progress, not perfection, is what matters.", image: "https://i.imgur.com/ghi101.jpg" },
-      { text: "You are loved, even on your hardest days.", image: "https://i.imgur.com/jkl112.jpg" },
-      { text: "This moment will pass. Hold on.", image: "https://i.imgur.com/mno131.jpg" },
-      { text: "You are capable of amazing things.", image: "https://i.imgur.com/pqr141.jpg" },
-      { text: "Be kind to yourself. You deserve it.", image: "https://i.imgur.com/stu151.jpg" },
-      { text: "Every day is a fresh start.", image: "https://i.imgur.com/vwx161.jpg" }
-    ];
-
-    function newMessage() {
-      const randomIndex = Math.floor(Math.random() * messages.length);
-      const randomMessage = messages[randomIndex];
-      document.getElementById('positive-message').textContent = randomMessage.text;
-      document.getElementById('positive-image').src = randomMessage.image;
-    }
-  </script>
-
+    <div class="widget" id="widget">
+        <h1>You've Got This!</h1>
+        <img id="positive-image" src="images/motivation.jpg" alt="Positive Image">
+        <p id="positive-message">Take a deep breath. You're doing better than you think.</p>
+        <button onclick="newMessage()">More Positivity</button>
+        <button onclick="closeWidget()">✖</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
