@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Positive Vibes Widget</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: transparent; /* Make the background transparent for a standalone feel */
+    }
+
+    .widget {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 200px; /* Smaller size for sticky note feel */
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      cursor: grab;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .widget h1 {
+      font-size: 16px;
+      color: #ff6f61;
+      margin-bottom: 10px;
+    }
+
+    .widget p {
+      font-size: 12px;
+      color: #333;
+      line-height: 1.4;
+      margin: 10px 0;
+    }
+
+    .widget img {
+      width: 100%;
+      max-width: 120px; /* Smaller image size */
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .widget button {
+      margin-top: 10px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #fff;
+      background: #ff6f61;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .widget button:hover {
+      background: #ff4a3d;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="widget" id="draggable-widget">
+    <h1>You've Got This! 💪</h1>
+    <img id="positive-image" src="https://i.imgur.com/352dSec.jpg" alt="Positive Image">
+    <p id="positive-message">Take a deep breath. You're doing better than you think.</p>
+    <button onclick="newMessage()">More Positivity</button>
+  </div>
+
+  <script>
+    const messages = [
+      { text: "You are stronger than you feel today.", image: "https://i.imgur.com/352dSec.jpg" },
+      { text: "Small steps still move you forward.", image: "https://i.imgur.com/9mCYAUn.jpg" },
+      { text: "It's okay to not be okay. Tomorrow is a new day.", image: "https://i.imgur.com/352dSec.jpg" },
+      { text: "You are enough, just as you are.", image: "https://i.imgur.com/9mCYAUn.jpg" },
+      { text: "Progress, not perfection, is what matters.", image: "https://i.imgur.com/352dSec.jpg" },
+      { text: "You are loved, even on your hardest days.", image: "https://i.imgur.com/9mCYAUn.jpg" },
+      { text: "This moment will pass. Hold on.", image: "https://i.imgur.com/352dSec.jpg" },
+      { text: "You are capable of amazing things.", image: "https://i.imgur.com/9mCYAUn.jpg" },
+      { text: "Be kind to yourself. You deserve it.", image: "https://i.imgur.com/352dSec.jpg" },
+      { text: "Every day is a fresh start.", image: "https://i.imgur.com/9mCYAUn.jpg" }
+    ];
+
+    function newMessage() {
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      const randomMessage = messages[randomIndex];
+      document.getElementById('positive-message').textContent = randomMessage.text;
+      document.getElementById('positive-image').src = randomMessage.image;
+    }
+
+    // Make the widget draggable
+    dragElement(document.getElementById("draggable-widget"));
+
+    function dragElement(elm) {
+      let posX = 0, posY = 0, mouseX = 0, mouseY = 0;
+      elm.onmousedown = dragMouseDown;
+
+      function dragMouseDown(e) {
+        e.preventDefault();
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+      }
+
+      function elementDrag(e) {
+        e.preventDefault();
+        posX = mouseX - e.clientX;
+        posY = mouseY - e.clientY;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        elm.style.top = (elm.offsetTop - posY) + "px";
+        elm.style.left = (elm.offsetLeft - posX) + "px";
+      }
+
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+  </script>
+
+</body>
+</html>
