@@ -13,53 +13,50 @@
     }
 
     .widget {
-      background: #ffff; /* White background */
-      padding: 15px;
+      background: url('https://i.imgur.com/dadyS4K.jpg') no-repeat center center/cover; /* Background image */
+      padding: 20px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       text-align: center;
-      width: 200px;
+      width: 250px; /* Slightly wider for better readability */
       position: fixed;
       top: 20px;
       left: 20px;
       cursor: grab;
       animation: fadeIn 1s ease-in-out;
+      color: #fff; /* Default text color */
     }
 
     .widget h1 {
-      font-size: 16px;
-      color: #ff6f61; /* Pinkish-red for heading */
+      font-size: 18px;
+      color: #fffacd; /* Pastel yellow for heading */
       margin-bottom: 10px;
+      font-weight: 700; /* Bold text */
     }
 
     .widget p {
-      font-size: 12px;
-      color: #333; /* Dark gray for text */
+      font-size: 14px;
+      color: #fffacd; /* Pastel yellow for text */
       line-height: 1.4;
       margin: 10px 0;
-    }
-
-    .widget img {
-      width: 100%;
-      max-width: 120px;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      font-weight: 500; /* Semi-bold text */
     }
 
     .widget button {
       margin-top: 10px;
-      padding: 6px 12px;
+      padding: 8px 16px;
       font-size: 12px;
-      color: #fff;
-      background: #ff6f61; /* Pinkish-red for button */
+      color: #333; /* Dark text for button */
+      background: #fffacd; /* Pastel yellow for button */
       border: none;
       border-radius: 6px;
       cursor: pointer;
       transition: background 0.3s ease;
+      font-weight: 500; /* Semi-bold text */
     }
 
     .widget button:hover {
-      background: #ff4a3d; /* Darker pinkish-red on hover */
+      background: #fff8b1; /* Slightly brighter yellow on hover */
     }
 
     @keyframes fadeIn {
@@ -74,30 +71,28 @@
 
   <div class="widget" id="draggable-widget">
     <h1>You've Got This! 💪</h1>
-    <img id="positive-image" src="https://i.imgur.com/dadyS4K.jpg" alt="Positive Image">
     <p id="positive-message">Take a deep breath. You're doing better than you think.</p>
     <button onclick="newMessage()">More Positivity</button>
   </div>
 
   <script>
     const messages = [
-      { text: "You are stronger than you feel today.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "Small steps still move you forward.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "It's okay to not be okay. Tomorrow is a new day.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "You are enough, just as you are.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "Progress, not perfection, is what matters.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "You are loved, even on your hardest days.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "This moment will pass. Hold on.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "You are capable of amazing things.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "Be kind to yourself. You deserve it.", image: "https://i.imgur.com/dadyS4K.jpg" },
-      { text: "Every day is a fresh start.", image: "https://i.imgur.com/dadyS4K.jpg" }
+      "You are stronger than you feel today.",
+      "Small steps still move you forward.",
+      "It's okay to not be okay. Tomorrow is a new day.",
+      "You are enough, just as you are.",
+      "Progress, not perfection, is what matters.",
+      "You are loved, even on your hardest days.",
+      "This moment will pass. Hold on.",
+      "You are capable of amazing things.",
+      "Be kind to yourself. You deserve it.",
+      "Every day is a fresh start."
     ];
 
     function newMessage() {
       const randomIndex = Math.floor(Math.random() * messages.length);
       const randomMessage = messages[randomIndex];
-      document.getElementById('positive-message').textContent = randomMessage.text;
-      document.getElementById('positive-image').src = randomMessage.image;
+      document.getElementById('positive-message').textContent = randomMessage;
     }
 
     // Make the widget draggable
@@ -130,10 +125,6 @@
         document.onmousemove = null;
       }
     }
-  </script>
-
-</body>
-</html>
   </script>
 
 </body>
