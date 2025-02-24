@@ -8,55 +8,64 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif; /* Montserrat font */
+      font-family: 'Montserrat', sans-serif;
       background: transparent;
     }
 
     .widget {
-      background: url('https://i.imgur.com/dadyS4K.jpg') no-repeat center center/cover; /* Background image */
+      background: url('https://i.imgur.com/dadyS4K.jpg') no-repeat center center/cover;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       text-align: center;
-      width: 250px; /* Slightly wider for better readability */
+      width: 260px;
+      height: 320px;
       position: fixed;
-      top: 20px;
-      left: 20px;
+      top: 50px;
+      left: 50px;
       cursor: grab;
       animation: fadeIn 1s ease-in-out;
-      color: #fff; /* Default text color */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Semi-transparent background for better readability */
+    .overlay {
+      background: rgba(255, 255, 255, 0.6); /* White with slight transparency */
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
     }
 
     .widget h1 {
       font-size: 18px;
-      color: #fffacd; /* Pastel yellow for heading */
       margin-bottom: 10px;
-      font-weight: 700; /* Bold text */
+      font-weight: 700;
     }
 
     .widget p {
       font-size: 14px;
-      color: #fffacd; /* Pastel yellow for text */
       line-height: 1.4;
       margin: 10px 0;
-      font-weight: 500; /* Semi-bold text */
+      font-weight: 500;
     }
 
     .widget button {
-      margin-top: 10px;
       padding: 8px 16px;
       font-size: 12px;
-      color: #333; /* Dark text for button */
-      background: #fffacd; /* Pastel yellow for button */
+      color: #333;
+      background: #FFD700; /* Golden Yellow */
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s ease;
-      font-weight: 500; /* Semi-bold text */
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-weight: 500;
     }
 
     .widget button:hover {
-      background: #fff8b1; /* Slightly brighter yellow on hover */
+      background: #FFEC8B; /* Softer pastel yellow */
+      transform: scale(1.05);
     }
 
     @keyframes fadeIn {
@@ -64,15 +73,16 @@
       to { opacity: 1; }
     }
   </style>
-  <!-- Load Montserrat font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <div class="widget" id="draggable-widget">
-    <h1>You've Got This! 💪</h1>
-    <p id="positive-message">Take a deep breath. You're doing better than you think.</p>
-    <button onclick="newMessage()">More Positivity</button>
+    <div class="overlay">
+      <h1 id="title">You've Got This! 💪</h1>
+      <p id="positive-message">Take a deep breath. You're doing better than you think.</p>
+      <button onclick="newMessage()">More Positivity</button>
+    </div>
   </div>
 
   <script>
@@ -89,10 +99,18 @@
       "Every day is a fresh start."
     ];
 
+    // Happy, bright colors that match positivity!
+    const colors = ["#FFD700", "#FFA500", "#32CD32", "#40E0D0"]; 
+    // Golden Yellow, Warm Orange, Soft Green, Light Teal
+
     function newMessage() {
       const randomIndex = Math.floor(Math.random() * messages.length);
-      const randomMessage = messages[randomIndex];
-      document.getElementById('positive-message').textContent = randomMessage;
+      document.getElementById('positive-message').textContent = messages[randomIndex];
+
+      // Change text color for variety & engagement
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.getElementById('positive-message').style.color = randomColor;
+      document.getElementById('title').style.color = randomColor;
     }
 
     // Make the widget draggable
@@ -129,3 +147,5 @@
 
 </body>
 </html>
+
+
